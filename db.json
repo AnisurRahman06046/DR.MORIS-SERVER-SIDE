@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Teeth Whitening",
+    "img": "https://i.ibb.co/T4M43Q2/teeth-whitening.png",
+    "price": "20.00",
+    "description": "Teeth will naturally lose their brightness over time. Drinking coffee or tea, or using tobacco, as well as certain childhood medications can cause teeth to discolor or darken even faster than normal.Whitening, also known as bleaching, is the procedure used to brighten teeth. There are two different ways to achieve a desired sparkling smile: In-Office Bleaching and At-Home Bleaching.The process of teeth whitening will give you a complete smile makeover and make your personality look vibrant.A protective gel or a rubber shield is placed over the gums to protect the soft tissue. A bleaching agent containing carbamide peroxide is applied to the teeth, and a specialized teeth whitening light is then used to enhance the action of the whitening agent. This is the fastest way to achieve results."
+  },
+  {
+    "title": "Teeth Cleaning",
+    "img": "https://i.ibb.co/Mc7s8Nn/teeth-cleaning.png",
+    "price": "20.00",
+    "description": "This is by far the most common reason people visit the dentist. Many dentists recommend a cleaning every six months, and some recommend once a year. Either way, it’s a very important part of oral health. Your own toothbrush will never be as efficient as the tools a dentist uses to clean your teeth.An annual or semi-annual visit for a cleaning will keep your teeth healthy, shiny, and strong. Plus, a cleaning causes very little discomfort, so no need to fret!Most teeth cleanings are performed by a dental hygienist. Before the actual cleaning process begins, they start with a physical exam of your entire mouth.The dental hygienist uses a small mirror to check around your teeth and gums for any signs of gingivitis (inflamed gums) or other potential concerns.If they detect major problems, the dental hygienist might call the dentist to make sure it’s fine to proceed."
+  },
+  {
+    "title": "Veneers",
+    "img": "https://i.ibb.co/mG1MhKL/t-veneers.png",
+    "price": "20.00",
+    "description": "If your teeth are crooked or discoloured, your dentist might recommend veneers. These are very popular solutions to common tooth problems. It’s essentially a thin covering placed over the front section of a tooth or set of teeth. They’re mainly used for correctional purposes, but they can be used for whitening, too. The process is simple and painless for most people, and it’s easy for dentists to perform."
+  },
+  {
+    "title": "Root Canals",
+    "img": "https://i.ibb.co/W3M3G0Y/t-rootfillings.png",
+    "price": "20.00",
+    "description": "This is one that most people dread, and for fair reasons. Root canals are usually preceded by some pretty awful tooth pain. A root canal means the tissue inside or under your tooth is infected and inflamed. To get rid of the pain, the dentist needs to deaden the nerve and remove the tissue. Sometimes you may need to take an antibiotic before the procedure.The good thing is that you’ll be numbed before it happens, so you won’t feel any pain, just pressure. Once the procedure is over – and it can take a few hours – you’ll be numb for a while, but hopefully pain free since the infection will be gone."
+  },
+  {
+    "title": "Teeth Extractions",
+    "img": "https://i.ibb.co/sw0fXr6/t-extractions.png",
+    "price": "20.00",
+    "description": "Extractions sound scary and painful. Admittedly, they are not the most pleasant of procedures. However, your dentist will do everything in their power to help you feel comfortable. You may need an extraction for any number of reasons.When having a tooth pulled, you’ll likely be either unconscious or thoroughly numbed. You won’t be able to feel a thing! You may be sore afterwards, but extractions are almost always to prevent further pain."
+  },
+  {
+    "title": "Crowns",
+    "img": "https://i.ibb.co/4YyZSh8/t-crowns.png",
+    "price": "20.00",
+    "description": "If your cavity is a little too big for a filling, or the top part of your tooth has decayed, a crown is the solution. These are usually two-visit procedures, but like the filling, shouldn’t be overtly painful. Your dentist will take a molding of your tooth so that a lab can craft a properly fitted crown to cover the decayed area.The good thing is that you’ll be numbed before it happens, so you won’t feel any pain, just pressure. Once the procedure is over – and it can take a few hours – you’ll be numb for a while, but hopefully pain free since the infection will be gone."
+  }
+]
