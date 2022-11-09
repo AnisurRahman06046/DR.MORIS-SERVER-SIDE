@@ -61,6 +61,18 @@ async function run() {
       const result = await reviewCollection.insertOne(user);
       res.send(result);
     });
+
+    // api for getting review in client side
+    app.get("/reviews", async (req, res) => {
+      let query = {};
+      const search = req.query.service;
+      if (search) {
+        query = { service: search };
+      }
+      const cursor = reviewCollection.find(query);
+      const reviews = await cursor.toArray();
+      res.send(reviews);
+    });
   } finally {
   }
 }
