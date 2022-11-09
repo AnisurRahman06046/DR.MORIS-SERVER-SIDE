@@ -29,7 +29,7 @@ async function run() {
       .collection("Services");
 
     // api for homepage
-    app.get("/services", async (req, res) => {
+    app.get("/home", async (req, res) => {
       const query = {};
       const cursor = serviceCollection.find(query);
       const result = await cursor.limit(3).toArray();
