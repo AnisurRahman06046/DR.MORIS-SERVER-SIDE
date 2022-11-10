@@ -73,6 +73,18 @@ async function run() {
       const reviews = await cursor.toArray();
       res.send(reviews);
     });
+
+    // api for getting individula user's review
+    app.get("/review", async (req, res) => {
+      let query = {};
+
+      if (req.query.email) {
+        query = { email: req.query.email };
+      }
+      const cursor = reviewCollection.find(query);
+      const userReview = await cursor.toArray();
+      res.send(userReview);
+    });
   } finally {
   }
 }
