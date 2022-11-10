@@ -24,20 +24,20 @@ const client = new MongoClient(uri, {
   serverApi: ServerApiVersion.v1,
 });
 
-function verifyJWT(req, res, next) {
-  const authHeader = req.headers.authorization;
-  if (!authHeader) {
-    res.status(401).send({ message: "unauthorized" });
-  }
-  const token = authHeader.split(" ")[1];
-  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, function (error, decoded) {
-    if (error) {
-      res.status(401).send({ message: "unauthorized" });
-    }
-    req.decoded = decoded;
-    next();
-  });
-}
+// function verifyJWT(req, res, next) {
+//   const authHeader = req.headers.authorization;
+//   if (!authHeader) {
+//     res.status(401).send({ message: "unauthorized" });
+//   }
+//   const token = authHeader.split(" ")[1];
+//   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, function (error, decoded) {
+//     if (error) {
+//       res.status(401).send({ message: "unauthorized" });
+//     }
+//     req.decoded = decoded;
+//     next();
+//   });
+// }
 async function run() {
   try {
     const serviceCollection = client
@@ -46,14 +46,14 @@ async function run() {
 
     const reviewCollection = client.db("ReviewServices").collection("Review");
 
-    app.post("/jwt", (req, res) => {
-      const user = req.body;
-      console.log(user);
-      const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
-        expiresIn: "2d",
-      });
-      res.send({ token });
-    });
+    // app.post("/jwt", (req, res) => {
+    //   const user = req.body;
+    //   console.log(user);
+    //   const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
+    //     expiresIn: "2d",
+    //   });
+    //   res.send({ token });
+    // });
 
     // api for homepage
     app.get("/home", async (req, res) => {
@@ -100,12 +100,12 @@ async function run() {
     });
 
     // api for getting individula user's review
-    app.get("/review", verifyJWT, async (req, res) => {
+    app.get("/review", async (req, res) => {
       //   console.log(req.headers.authorization);
-      const decoded = req.decoded;
-      if (decoded.email !== req.query.email) {
-        res.status(403).send({ message: "unauthorized" });
-      }
+      //   const decoded = req.decoded;
+      //   if (decoded.email !== req.query.email) {
+      //     res.status(403).send({ message: "unauthorized" });
+      //   }
       let query = {};
 
       if (req.query.email) {
