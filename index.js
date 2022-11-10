@@ -5,6 +5,7 @@ const port = process.env.PORT || 5000;
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
+const { application } = require("express");
 require("dotenv").config();
 
 // middle ware
@@ -130,6 +131,36 @@ async function run() {
       const query = req.body;
       const addedService = await serviceCollection.insertOne(query);
       res.send(addedService);
+    });
+
+    // api for getting data to update
+    app.get("/editreview/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = {
+        _id: ObjectId(id),
+      };
+      const result = await reviewCollection.findOne(query);
+      res.send(result);
+    });
+
+    // api for update
+    app.put("/updatereview/:id", async (req, res) => {
+      const id = req.params.id;
+      const filter = { _id: ObjectId(id) };
+      const updatedInfo = req.body;
+      const option = { upsert: true };
+      const updatedReview = {
+        $set: {
+          name: updatedInfo.name,
+          Review: updatedInfo.Review,
+        },
+      };
+      const result = await reviewCollection.updateOne(
+        filter,
+        updatedReview,
+        option
+      );
+      res.send(result);
     });
   } finally {
   }
