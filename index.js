@@ -12,7 +12,7 @@ require("dotenv").config();
 app.use(cors());
 app.use(express.json());
 
-// testing server
+// testing server demo
 app.get("/", (req, res) => {
   res.send("api is running");
 });
