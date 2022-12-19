@@ -25,20 +25,20 @@ const client = new MongoClient(uri, {
   serverApi: ServerApiVersion.v1,
 });
 
-// function verifyJWT(req, res, next) {
-//   const authHeader = req.headers.authorization;
-//   if (!authHeader) {
-//     res.status(401).send({ message: "unauthorized" });
-//   }
-//   const token = authHeader.split(" ")[1];
-//   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, function (error, decoded) {
-//     if (error) {
-//       res.status(401).send({ message: "unauthorized" });
-//     }
-//     req.decoded = decoded;
-//     next();
-//   });
-// }
+function verifyJWT(req, res, next) {
+  const authHeader = req.headers.authorization;
+  if (!authHeader) {
+    return res.status(401).send({ message: "unauthorized" });
+  }
+  const token = authHeader.split(" ")[1];
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, function (error, decoded) {
+    if (error) {
+      return res.status(401).send({ message: "unauthorized" });
+    }
+    req.decoded = decoded;
+    next();
+  });
+}
 async function run() {
   try {
     const serviceCollection = client
@@ -47,14 +47,14 @@ async function run() {
 
     const reviewCollection = client.db("ReviewServices").collection("Review");
 
-    // app.post("/jwt", (req, res) => {
-    //   const user = req.body;
-    //   console.log(user);
-    //   const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
-    //     expiresIn: "2d",
-    //   });
-    //   res.send({ token });
-    // });
+    app.post("/jwt", (req, res) => {
+      const user = req.body;
+      console.log(user);
+      const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
+        expiresIn: "2d",
+      });
+      res.send({ token });
+    });
 
     // api for homepage
     app.get("/home", async (req, res) => {
@@ -127,7 +127,13 @@ async function run() {
       res.send(result);
     });
     // api for adding services
-    app.post("/addservice", async (req, res) => {
+    app.post("/addservice", verifyJWT, async (req, res) => {
+      const decoded = req.decoded;
+
+      // console.log(req.body.email);
+      if (decoded.email !== req.body.email) {
+        return res.status(403).send({ message: "unauthorized access" });
+      }
       const query = req.body;
       const addedService = await serviceCollection.insertOne(query);
       res.send(addedService);
@@ -144,7 +150,11 @@ async function run() {
     });
 
     // api for update
-    app.put("/updatereview/:id", async (req, res) => {
+    app.put("/updatereview/:id", verifyJWT, async (req, res) => {
+      const decoded = req.decoded;
+      if (decoded.email !== req.body.email) {
+        return res.status(403).send({ message: "unauthorized access" });
+      }
       const id = req.params.id;
       const filter = { _id: ObjectId(id) };
       const updatedInfo = req.body;
